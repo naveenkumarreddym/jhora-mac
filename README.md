@@ -10,6 +10,8 @@ double-clickable application. It is **not a rewrite**: it bundles the official p
 ephemeris, atlas and fonts with [Wine](https://www.winehq.org), the open-source compatibility layer
 that runs Windows programs on macOS. All calculations are exactly those of the Windows version.
 
+![Jagannatha Hora 8.0 running on macOS](docs/screenshot.png)
+
 ## Download
 
 **[⬇ Download JagannathaHora-8.0-mac.dmg](https://github.com/naveenkumarreddym/jhora-mac/releases/latest)** (about 430 MB)
