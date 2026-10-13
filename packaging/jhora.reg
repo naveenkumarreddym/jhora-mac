@@ -1,0 +1,30 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Fonts]
+"AS-TTDurga Normal (TrueType)"="Asdr0ntt.ttf"
+"BN-TTDurga Normal (TrueType)"="BNDR0ntt.ttf"
+"DV-TTYogesh Normal (TrueType)"="DVYG0ntt.ttf"
+"DV1-TTYogesh Normal (TrueType)"="DVYG1ntt.ttf"
+"GJ-TTAvantika Normal (TrueType)"="GJAV0ntt.ttf"
+"KN-TTUma Normal (TrueType)"="KNUM0ntt.ttf"
+"ML-TTKarthika Normal (TrueType)"="MLKR0ntt.ttf"
+"OR-TTSarala Normal (TrueType)"="ORSR0ntt.ttf"
+"PN-TTAmar Normal (TrueType)"="PNAM0ntt.ttf"
+"SD-TTSurekh-Normal (TrueType)"="Sdsr0ntt.ttf"
+"TL-TTHemalatha-Normal (TrueType)"="TLHM0ntt.ttf"
+"TM-TTValluvar Normal (TrueType)"="TMVL0ntt.ttf"
+
+[HKEY_CLASSES_ROOT\.jhd]
+@="JHora.Document"
+
+[HKEY_CLASSES_ROOT\JHora.Document]
+@="Jagannatha Hora Data"
+
+[HKEY_CLASSES_ROOT\JHora.Document\DefaultIcon]
+@="C:\\JHora\\bin\\jhora.exe,1"
+
+[HKEY_CLASSES_ROOT\JHora.Document\shell\open\command]
+@="C:\\JHora\\bin\\jhora.exe \"%1\""
+
+[HKEY_CURRENT_USER\Software\Jagannatha Hora\Jagannatha Hora\Settings]
+"Path"="C:\\JHora"

@@ -1,0 +1,25 @@
+Jagannatha Hora 8.0 for macOS
+=============================
+
+INSTALL
+  Drag "Jagannatha Hora" onto the Applications folder.
+
+FIRST LAUNCH
+  macOS will block it because it is not from an identified developer.
+  1. Double-click Jagannatha Hora; click Done/Cancel on the warning.
+  2. Open System Settings > Privacy & Security, scroll down and click
+     "Open Anyway" next to Jagannatha Hora, then confirm.
+  The first launch takes about a minute while it sets itself up.
+  Apple Silicon Macs need Rosetta 2; the app tells you if it is missing.
+
+QUIT
+  Use File > Exit inside JHora.
+
+YOUR CHARTS
+  Stored in ~/Library/Application Support/JHora/prefix/drive_c/JHora/data
+
+UNINSTALL
+  Delete the app and the folder ~/Library/Application Support/JHora
+
+Jagannatha Hora is freeware by P.V.R. Narasimha Rao (vedicastrologer.org).
+It runs here using Wine (winehq.org).

@@ -1,0 +1,44 @@
+#!/bin/bash
+# Launcher for Jagannatha Hora 8.0 running under a bundled copy of Wine.
+# On first launch it creates a private Wine prefix in Application Support
+# and installs the JHora program files, fonts and registry settings into it.
+
+RES="$(cd "$(dirname "$0")/../Resources" && pwd)"
+WINEBIN="$RES/wine/bin"
+SUPPORT="$HOME/Library/Application Support/JHora"
+export WINEPREFIX="$SUPPORT/prefix"
+export WINEDEBUG=-all
+LOG="$HOME/Library/Logs/JHora.log"
+MARKER="$WINEPREFIX/.jhora-installed"
+
+alert() {
+    /usr/bin/osascript -e "display alert \"Jagannatha Hora\" message \"$1\" as critical" >/dev/null 2>&1
+}
+
+# Wine is an Intel binary, so Apple Silicon Macs need Rosetta 2.
+if [ "$(/usr/bin/uname -m)" = "arm64" ] && ! /usr/bin/arch -x86_64 /usr/bin/true 2>/dev/null; then
+    alert "Rosetta 2 is required. Open Terminal, run:\n\nsoftwareupdate --install-rosetta --agree-to-license\n\nthen open Jagannatha Hora again."
+    exit 1
+fi
+
+mkdir -p "$SUPPORT" "$(dirname "$LOG")"
+
+if [ ! -f "$MARKER" ]; then
+    /usr/bin/osascript -e 'display notification "Setting up for first use. This takes about a minute." with title "Jagannatha Hora"' >/dev/null 2>&1
+    {
+        echo "=== First-run setup $(date) ==="
+        "$WINEBIN/wineboot" -i &&
+        /usr/bin/ditto "$RES/payload/JHora" "$WINEPREFIX/drive_c/JHora" &&
+        /usr/bin/ditto "$RES/payload/Fonts" "$WINEPREFIX/drive_c/windows/Fonts" &&
+        "$WINEBIN/wine" regedit /S "$RES/payload/jhora.reg" &&
+        "$WINEBIN/wineserver" -w &&
+        touch "$MARKER"
+    } >>"$LOG" 2>&1
+    if [ ! -f "$MARKER" ]; then
+        alert "First-run setup failed. Details are in ~/Library/Logs/JHora.log"
+        exit 1
+    fi
+fi
+
+cd "$WINEPREFIX/drive_c/JHora/bin" || exit 1
+exec "$WINEBIN/wine" 'C:\JHora\bin\jhora.exe' >>"$LOG" 2>&1
